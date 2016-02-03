@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
-app.use(express.static('./client/assets'));
+app.use(express.static('./client'));
 
 app.get('/', function(req, res, next){
-  res.sendFile(__dirname + '/assets/client/views/index.html');
+  res.sendFile(__dirname + '/client/views/index.html');
 });
 
 var port = 8080;

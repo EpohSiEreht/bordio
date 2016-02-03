@@ -8,4 +8,10 @@ ctrl.controller('bordio', ['$scope', 'bordioApi', function($scope, borderApi){
     });
   }
 
+  function init(){
+    $scope.getShots();
+  }
+
+  init();
+
 }]);
