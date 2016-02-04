@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 
 app.use(express.static('./client'));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.get('/', function(req, res, next){
   res.sendFile(__dirname + '/client/views/index.html');
 });
