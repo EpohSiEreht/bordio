@@ -16,7 +16,11 @@ api.factory('bordioApi', ['$http', function($http){
   }
 
   bordioInterface.getDribbbleShots = function(){
-    return $http.jsonp('https://api.dribbble.com/v1/shots?timeframe=week&access_token=bf4fc74b1a77b1fa15e78f778a7040b88bee4d3b53fa96cd00c62a8dcba42688&callback=JSON_CALLBACK');
+    return $http.jsonp('https://api.dribbble.com/v1/shots?timeframe=week&access_token=bf4fc74b1a77b1fa15e78f778a7040b88bee4d3b53fa96cd00c62a8dcba42688&page=1&per_page=21&callback=JSON_CALLBACK');
+  }
+
+  bordioInterface.getDribbbleGifs = function(){
+    return $http.jsonp('https://api.dribbble.com/v1/shots?timeframe=week&list=animated&access_token=bf4fc74b1a77b1fa15e78f778a7040b88bee4d3b53fa96cd00c62a8dcba42688&page=1&per_page=21&callback=JSON_CALLBACK');
   }
 
 

@@ -2,6 +2,7 @@
 <html ng-app="bordioClient">
 <head>
   <title>Bordio</title>
+  <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script type="text/javascript" src="/app.js"></script>
@@ -11,12 +12,15 @@
   <script type="text/javascript" src="/assets/js/scripts.js"></script>
 </head>
 <body>
+  <div class="title-area">
+    <h1> Bordio </h1>
+  </div>
 
-  <h1> Bordio </h1>
+  <div ng-controller="bordio" class="bordio-section">
 
-  <div ng-controller="bordio">
-
-
+  <div ng-repeat="shot in shots" class="bordio-card">
+    <img ng-src="{{shot.images.normal}}" class="image-card">
+  </div>
 
   </div>
 

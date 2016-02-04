@@ -2,7 +2,8 @@ var ctrl = angular.module('bordioController', []);
 
 ctrl.controller('bordio', ['$scope', 'bordioApi', function($scope, bordioApi){
 
-  $scope.bordios = [];
+  $scope.shots = [];
+  $scope.gifs = [];
 
   // $scope.getAll = function(){
   //   bordioApi.getFeatured().then(function(response){
@@ -11,21 +12,23 @@ ctrl.controller('bordio', ['$scope', 'bordioApi', function($scope, bordioApi){
   //     console.log($scope.bordios);
   //   });
   // }
-
-  $scope.getDribbleAll = function(){
-    bordioApi.getDribbble().then(function(response){
-      console.log(response.data);
-    })
-  }
-
-  $scope.getDribbleShots = function(){
+  $scope.getDribbleShotsThisWeek = function(){
     bordioApi.getDribbbleShots().then(function(response){
-      console.log(response);
+      console.log(response.data);
+      var dribbble = response.data.data;
+      $scope.shots = dribbble;
+      console.log($scope.shots);
     })
   }
 
+  $scope.getDribbleGifsThisWeek = function(){
+    bordioApi.getDribbbleGifs().then(function(response){
+      console.log(response.data);
+      var dribbble = response.data.data;
+      $scope.gifs = dribbble;
+    })
+  }
 
-  $scope.getDribbleAll();
-  $scope.getDribbleShots();
+  $scope.getDribbleShotsThisWeek();
 
 }]);
