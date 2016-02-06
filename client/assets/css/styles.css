@@ -7,47 +7,125 @@ body{
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(252,252,252);
   position: relative;
 }
 
-div.title-area{
-  position: absolute;
-  width: 16%;
-  height: 30px;
-  background-color: black;
+.title-area{
+  position: relative;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #312F31;
 }
 
 h1{
   position: absolute;
   margin: 0;
   font-family: 'Patua One', cursive;
-  text-align: center;
-  font-size: 22px;
+  font-size: 30px;
+  padding-top: 5px;
+  width: 98%;
   height: 100%;
-  width: 100%;
+  left: 1%;
   color: white;
 }
 
-div.bordio-section{
+.bordio-section{
   position: absolute;
-  width: 85%;
-  left: 15%;
-  height: 100%;
-  text-align: right;
+  top: 10%;
+  width: 100%;
+  height: 90%;
+  text-align: center;
   overflow: auto;
 }
 
-div.bordio-card{
-  margin: 0 2px;
-  height: 300px;
-  position: relative;
-  display: inline-block;
-  width: 400px;
+@-webkit-keyframes pulse {
+ 0% {border-bottom: 10px solid #FF3B63 ;}
+ 33% {border-bottom: 10px solid #FFDD5C ;}
+ 66% {border-bottom: 10px solid #94FF59 ;}
+ 100% {border-bottom: 10px solid #65CCFF }
 }
 
-img.image-card{
+.bordio-card{
   position: relative;
+  margin: 0 2px;
+  height: 240px;
+  display: inline-block;
+  width: 320px;
+  -webkit-animation: pulse 10s infinite alternate;
+}
+
+.showInfo{
+  position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 7000;
+  margin: 0;
+  left: 0;
+  border: none;
+}
+
+.hover-info{
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(252,252,252,.8);
+}
+
+.hover-info:hover{
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,.9);
+}
+
+h5{
+  position: absolute;
+  margin: 0;
+  font-family: 'Patua One', cursive;
+  color: white;
+}
+
+p{
+  position: absolute;
+  margin: 0;
+  font-family: 'Patua One', cursive;
+  color: white;
+}
+
+.avatar{
+  margin: 0;
+  position: absolute;
+  height: auto;
+  width: 30%;
+  left: 35%;
+  border-radius: 50%;
+  top: 15%;
+  border: 5px solid white;
+}
+
+.title{
+  top: 65%;
+  width: 100%;
+  font-size: 20px;
+}
+
+.by{
+  top: 75%;
+}
+
+.name{
+  top: 84%;
+}
+
+.clickable{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 90000;
 }

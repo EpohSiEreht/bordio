@@ -5,6 +5,9 @@ ctrl.controller('bordio', ['$scope', 'bordioApi', function($scope, bordioApi){
   $scope.shots = [];
   $scope.gifs = [];
 
+  $scope.page = 1;
+  $scope.limit = 21;
+
   // $scope.getAll = function(){
   //   bordioApi.getFeatured().then(function(response){
   //     console.log(response.data);
@@ -12,23 +15,37 @@ ctrl.controller('bordio', ['$scope', 'bordioApi', function($scope, bordioApi){
   //     console.log($scope.bordios);
   //   });
   // }
-  $scope.getDribbleShotsThisWeek = function(){
-    bordioApi.getDribbbleShots().then(function(response){
+  $scope.loadMore = function(){
+    bordioApi.getDribbbleShots($scope.page, $scope.limit).then(function(response){
       console.log(response.data);
       var dribbble = response.data.data;
-      $scope.shots = dribbble;
-      console.log($scope.shots);
+      $scope.shots = $scope.shots.concat(dribbble);
+      $scope.page += 1;
+      console.log(dribbble);
     })
   }
 
-  $scope.getDribbleGifsThisWeek = function(){
-    bordioApi.getDribbbleGifs().then(function(response){
+  $scope.loadMoreGifs = function(){
+    bordioApi.getDribbbleGifs($scope.page, $scope.limit).then(function(response){
       console.log(response.data);
       var dribbble = response.data.data;
-      $scope.gifs = dribbble;
+      $scope.gifs = $scope.shots.concat(dribbble);
+      $scope.page += 1;
     })
   }
 
-  $scope.getDribbleShotsThisWeek();
+  $scope.loadMore();
 
 }]);
+
+ctrl.directive('whenScrolled', function() {
+    return function(scope, elm, attr) {
+        var raw = elm[0];
+
+        elm.bind('scroll', function() {
+            if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+                scope.$apply(attr.whenScrolled);
+            }
+        });
+    };
+});

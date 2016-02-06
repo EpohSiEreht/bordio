@@ -16,11 +16,21 @@
     <h1> Bordio </h1>
   </div>
 
-  <div ng-controller="bordio" class="bordio-section">
+  <div ng-controller="bordio" class="bordio-section" when-scrolled="loadMore()">
 
-  <div ng-repeat="shot in shots" class="bordio-card">
-    <img ng-src="{{shot.images.normal}}" class="image-card">
-  </div>
+    <div ng-repeat="shot in shots" class="bordio-card">
+
+      <section class="showInfo" style="background-image: url({{shot.images.normal}})">
+        <div class="hover-info">
+          <img ng-src="{{shot.user.avatar_url}}" class="avatar">
+          <h5 class="title">{{shot.title}}</h5>
+          <p class="by">by</p>
+          <p class="name">{{shot.user.name}}</p>
+          <div class="clickable" id="{{shot.html_url}}"></div>
+        </div>
+      </section>
+
+    </div>
 
   </div>
 
