@@ -18,7 +18,7 @@ app.get('/', function(req, res, next){
 
 // Custom Middleware for Accessing APIs
 app.use(function(req, res, next){
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "https://s3.amazonaws.com");
   next();
 });
 
