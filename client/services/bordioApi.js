@@ -13,9 +13,10 @@ api.factory('bordioApi', ['$http', function($http){
   var dCallback = '&callback=JSON_CALLBACK'
   var bordioInterface = {};
 
-  $http.get('/key', function(err, done){
-    console.log(done);
-  });
+  bordioInterface.getDribbbleShots = function(){
+    return $http.get('/key');
+  }
+
 
   // bordioInterface.getDribbbleShots = function(page, limit){
   //   var page = page || 1;

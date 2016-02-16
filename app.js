@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var env = require('dotenv').load();
+require('dotenv').load();
 var request = require('request');
 var key = process.env.D_API_TOKEN;
 
@@ -19,13 +19,12 @@ app.get('/', function(req, res, next){
 });
 
 app.get('/key', function(req, res){
-	var dUrl = "https://api.dribbble.com/v1/shots?&timeframe=week"
+	var dUrl = "https://api.dribbble.com/v1/shots?&timeframe=week";
 	var page = page || 1;
     var limit = limit || 21;
-	var dCallback = '&callback=JSON_CALLBACK'
-	request(dUrl + process.env.D_API_TOKEN + '&page=' + page + '&per_page=' + limit + dCallback, function(err, response, body){
+	request(dUrl + process.env.D_API_TOKEN + '&page=' + page + '&per_page=' + limit, function(err, response, body){
 	console.log(response)
-	res.json(body)
+	res.json(JSON.parse(body))
 	});
 });
 
