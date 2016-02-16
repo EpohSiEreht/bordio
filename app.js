@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 require('dotenv').load();
 var request = require('request');
 
-
+document.domain = 'https://bordio-board.herokuapp.com';
 
 app.use(express.static('./client'));
 
