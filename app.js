@@ -3,7 +3,6 @@ var app = express();
 var bodyParser = require('body-parser');
 require('dotenv').load();
 var request = require('request');
-var key = process.env.D_API_TOKEN;
 
 
 
@@ -18,6 +17,9 @@ app.get('/', function(req, res, next){
   res.sendFile(__dirname + '/client/views/index.html');
 });
 
+var index = require('./client/routes');
+app.use('/', index);
+
 app.get('/key', function(req, res){
 	var dUrl = "https://api.dribbble.com/v1/shots?&timeframe=week";
 	var page = page || 1;
@@ -28,7 +30,7 @@ app.get('/key', function(req, res){
 	});
 });
 
-var port = 8080;
+var port = process.env.PORT || 8080;
 app.listen(port, function(){
   console.log('Successfully landed on port ' + port);
 });
