@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 require('dotenv').load();
 var request = require('request');
 
-document.domain = 'https://bordio-board.herokuapp.com';
 
 app.use(express.static('./client'));
 
@@ -27,7 +26,7 @@ app.get('/key', function(req, res){
 	var dUrl = "https://api.dribbble.com/v1/shots?&timeframe=week";
 	var page = page || 1;
     var limit = limit || 21;
-	request(dUrl + process.env.D_API_TOKEN + '&page=' + page + '&per_page=' + limit + "&callback=?", function(err, response, body){
+	request(dUrl + process.env.D_API_TOKEN + '&page=' + page + '&per_page=' + limit, function(err, response, body){
 	console.log(response)
 	res.json(JSON.parse(body))
 	});
