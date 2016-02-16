@@ -30,6 +30,13 @@ app.get('/key', function(req, res){
 	});
 });
 
+// ~~~~~~~~~~IMPORT ROUTER~~~~~~~~~~~~~ //
+var indexRouter = require('./routes/index');
+
+// ~~~~~~~~~~MAP ROUTER~~~~~~~~~~~~~ //
+app.use('/', indexRouter);
+
+
 var port = process.env.PORT || 8080;
 app.listen(port, function(){
   console.log('Successfully landed on port ' + port);
