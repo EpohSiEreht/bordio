@@ -17,8 +17,11 @@ app.get('/', function(req, res, next){
   res.sendFile(__dirname + '/client/views/index.html');
 });
 
-var index = require('./client/routes');
-app.use('/', index);
+// Custom Middleware for Accessing APIs
+app.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 app.get('/key', function(req, res){
 	var dUrl = "https://api.dribbble.com/v1/shots?&timeframe=week";
